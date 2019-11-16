@@ -1,4 +1,6 @@
-# Game-of-Life
+# Game of Life
+## A simulation of a famous cellular automaton
+
 
 
 ### The Rules of Life
