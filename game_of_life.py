@@ -2,17 +2,35 @@ import pygame
 import numpy as np
 import time
 
-# Define some colors
-BLACK = (0, 0, 0)
-WHITE = (220,220,220)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
+#black gradient
+
+colours = [(0, 0, 0),
+           (64,64,64),
+           (128,128,128),
+           (160,160,160),
+           (192,192,192),
+           (224,224,224),
+           (255,255,255)]
+
+
+'''
+#green gradient
+colours = [(0, 51, 25),
+           (0,102,51),
+           (0,153,76),
+           (0,204,102),
+           (0,255,128),
+           (153,224,204),
+           (204,255,229),
+           (255,255,255)]
+'''
+
 
 # Set the HEIGHT and WIDTH of the screen
-WINDOW_SIZE = [750, 750]
+WINDOW_SIZE = [700, 700]
 screen = pygame.display.set_mode(WINDOW_SIZE)
 
-cell_size = 2
+cell_size = 6
 cell_count = int(WINDOW_SIZE[0]/cell_size)
 
 # Create a 2 dimensional array. A two dimensional
@@ -26,8 +44,7 @@ HEIGHT = cell_size
 MARGIN = 0
 
 
-
-
+colour_of_cells = [[colours[-1] for x in range(cell_count)] for y in range(cell_count)]
 
 # Initialize pygame
 pygame.init()
@@ -45,7 +62,7 @@ clock = pygame.time.Clock()
 # generate random population
 for k in range(cell_count):
     for b in range(cell_count):
-        grid[k][b] = np.random.choice([0,1])
+        grid[k][b] = np.random.choice([0,1], p=[0.9, 0.1])
 
 
 
@@ -57,6 +74,8 @@ grid[10][9] = 1
 
 
 def check_cell_status(row, col, grid):
+
+    # 1 indicates alive
     alive_count = 0
     if row>0 and column>0 and row<cell_count-1 and column<cell_count-1:
         # cells with less than two neighbours die
@@ -87,10 +106,13 @@ def check_cell_status(row, col, grid):
 def draw_life():
     for row in range(cell_count):
         for column in range(cell_count):
-            color = WHITE
+            color = colours[-1]
             if grid[row][column] == 1:
-                color = BLACK
-            pygame.draw.rect(screen, color,[(MARGIN + WIDTH) * column + MARGIN,
+                colour_of_cells[row][column] = colours[0]
+            else:
+                if colours.index(colour_of_cells[row][column]) != len(colours)-1:
+                    colour_of_cells[row][column] = colours[colours.index(colour_of_cells[row][column])+1]
+            pygame.draw.rect(screen, colour_of_cells[row][column],[(MARGIN + WIDTH) * column + MARGIN,
                             (MARGIN + HEIGHT) * row + MARGIN, WIDTH, HEIGHT])
 
 
