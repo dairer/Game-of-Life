@@ -2,6 +2,7 @@ import pygame
 import numpy as np
 import time
 
+<<<<<<< HEAD
 #black gradient
 
 colours = [(0, 0, 0),
@@ -28,12 +29,19 @@ colours = [(0, 51, 25),
 
 # Set the HEIGHT and WIDTH of the screen
 WINDOW_SIZE = [700, 700]
+=======
+BLACK = (0, 0, 0)
+WHITE = (220,220,220)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+
+WINDOW_SIZE = [750, 750]
+>>>>>>> 9aadff892dfcff480e9d5d5b048c1de068144c0d
 screen = pygame.display.set_mode(WINDOW_SIZE)
 
 cell_size = 6
 cell_count = int(WINDOW_SIZE[0]/cell_size)
 
-# Create a 2 dimensional array. A two dimensional
 grid = [[0 for x in range(cell_count)] for y in range(cell_count)]
 
 # This sets the WIDTH and HEIGHT of each grid location
@@ -46,13 +54,11 @@ MARGIN = 0
 
 colour_of_cells = [[colours[-1] for x in range(cell_count)] for y in range(cell_count)]
 
-# Initialize pygame
 pygame.init()
 
 # Set title of screen
 pygame.display.set_caption("~ game of life ~")
 
-# Loop until the user clicks the close button.
 done = False
 
 # Used to manage how fast the screen updates
@@ -135,7 +141,7 @@ while not done:
         Similarly, all other dead cells stay dead.
     '''
     draw_life()
-    #
+    
     # check status of every cell
 
     next_generation = [[0 for x in range(cell_count)] for y in range(cell_count)]
@@ -144,15 +150,12 @@ while not done:
             next_generation[row][column] = check_cell_status(row, column, grid)
 
     grid = next_generation
-    # Draw the grid
 
     clock.tick(5) # frames per second
 
 
 
-    # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
-# Be IDLE friendly. If you forget this line, the program will 'hang'
-# on exit.
+
 pygame.quit()
