@@ -1,5 +1,5 @@
 # Game of Life
-## A simulation of a famous cellular automaton
+<i> A simulation of a famous cellular automaton </i>
 
 
 
