@@ -1,6 +1,7 @@
 # Game of Life
 <i> A simulation of a famous cellular automaton </i>
 
+![Animation of game of life](/figs/animation.gif)*Animation of The Game of Life*
 
 
 ### The Rules of Life
