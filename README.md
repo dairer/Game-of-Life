@@ -1,6 +1,6 @@
 # Game of Life
 
-![Animation of game of life](/figs/animation.gif)* A simulation of a famous cellular automaton *
+![Animation of game of life](/figs/animation.gif)A simulation of a famous cellular automaton
 
 
 ### The Rules of Life
