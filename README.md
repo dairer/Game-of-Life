@@ -2,6 +2,7 @@
 
 ![Animation of game of life](/figs/animation.gif)A simulation of a famous cellular automaton
 
+(this is not useful, just fun)
 
 ### The Rules of Life
 
